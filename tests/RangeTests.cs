@@ -19,5 +19,19 @@ namespace tests
             //Assert
             Assert.Equal(3, generated.Count());
         }
+
+        [Fact]
+        public void Sort_OrderResults()
+        {
+            //Arrange
+            var range = new Range { Count = 3, Sort = true };
+            var values = new[] { "a", "c", "b" };
+            var counter = 0;
+            //Act
+            var generated = range.Of(() => values[counter++]);
+
+            //Assert
+            Assert.Equal(new[] { "a", "b", "c" }, generated.ToArray());
+        }
     }
 }
